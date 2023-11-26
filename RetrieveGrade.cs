@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,40 +11,43 @@ using System.Windows.Forms;
 
 namespace GradeCalculator
 {
-    private string connectionString = "YourConnectionString";
-
-    public RetrieveGrade()
+    public partial class RetrieveGrade : UserControl
     {
-        InitializeComponent();
-    }
 
-    private void RetrieveGradesButton_Click(object sender, EventArgs e)
-    {
-        string storedProcedureName = "YourStoredProcedureName";
+        private string connectionString = "YourConnectionString";
 
-        // Retrieves grades from the stored procedure
-        using (SqlConnection connection = new SqlConnection(connectionString))
+        public RetrieveGrade()
         {
-            using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
+            InitializeComponent();
+        }
+
+        private void RetrieveGradesButton_Click(object sender, EventArgs e)
+        {
+            string storedProcedureName = "YourStoredProcedureName";
+
+            // Retrieves grades from the stored procedure
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                command.CommandType = CommandType.StoredProcedure;
-
-                // Add any required parameters to the command, if necessary
-                // command.Parameters.AddWithValue("@parameterName", parameterValue);
-
-                connection.Open();
-
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
                 {
-                    while (reader.Read())
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    // Add any required parameters to the command, if necessary
+                    // command.Parameters.AddWithValue("@parameterName", parameterValue);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        // Retrieve grades from the reader and process them as needed
-                        var grade = reader.GetString(0); 
+                        while (reader.Read())
+                        {
+                            // Retrieve grades from the reader and process them as needed
+                            var grade = reader.GetString(0); 
+                        }
+                    }
                 }
             }
         }
     }
-}
-}
 }
 
