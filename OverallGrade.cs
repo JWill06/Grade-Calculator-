@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,20 @@ using System.Windows.Forms;
 
 namespace GradeCalculator
 {
+    
     public partial class OverallGrade : UserControl
     {
+        DB database;
         public OverallGrade()
         {
             InitializeComponent();
+            database = new DB();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double percentage = database.CalculateOverallPercentage("YourStoredProcedureName");
+            lb_percentageOverall.Text = percentage.ToString();
         }
     }
 }
