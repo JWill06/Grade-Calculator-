@@ -60,25 +60,5 @@ namespace GradeCalculator
                 }
             }
         }
-
-        //change storedProcedureName
-        public double CalculateOverallPercentage(string storedProcedureName)
-        {
-            double percentage = 0;
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                using (SqlCommand command = new SqlCommand(storedProcedureName, connection))
-                {
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    
-                    connection.Open();
-                    percentage = (double)command.ExecuteScalar();
-                    connection.Close();
-                }
-            }
-
-            return percentage;
-        }
     }
 }
