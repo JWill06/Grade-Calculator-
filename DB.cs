@@ -15,6 +15,7 @@ namespace GradeCalculator
 
         public DB()
         {
+            //Change to your server
             connectionString = "Server = WARDWINDOWS; " +
                                "Trusted_Connection=true;" +
                                "Database=StudentDatabase;" +
