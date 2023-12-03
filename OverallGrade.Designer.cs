@@ -94,8 +94,8 @@
             this.lb_percentageOverall.Name = "lb_percentageOverall";
             this.lb_percentageOverall.Size = new System.Drawing.Size(46, 18);
             this.lb_percentageOverall.TabIndex = 26;
-            this.lb_percentageOverall.Text = "label1";
-            this.lb_percentageOverall.Visible = false;
+            //this.lb_percentageOverall.Text = "label1";
+            this.lb_percentageOverall.Visible = true;
             // 
             // lb_letterGradeOverall
             // 
@@ -105,8 +105,8 @@
             this.lb_letterGradeOverall.Name = "lb_letterGradeOverall";
             this.lb_letterGradeOverall.Size = new System.Drawing.Size(46, 18);
             this.lb_letterGradeOverall.TabIndex = 27;
-            this.lb_letterGradeOverall.Text = "label2";
-            this.lb_letterGradeOverall.Visible = false;
+            //this.lb_letterGradeOverall.Text = "label2";
+            this.lb_letterGradeOverall.Visible = true;
             // 
             // OverallGrade
             // 
