@@ -1,4 +1,4 @@
-﻿namespace GradeCalculator
+namespace GradeCalculator
 {
     partial class RetrieveGrade
     {
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxAssignmentID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,12 +53,12 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Retrieve Grade";
             // 
-            // textBox1
+            // textBoxAssignmentID
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 20);
-            this.textBox1.TabIndex = 9;
+            this.textBoxAssignmentID.Location = new System.Drawing.Point(106, 59);
+            this.textBoxAssignmentID.Name = "textBoxAssignmentID";
+            this.textBoxAssignmentID.Size = new System.Drawing.Size(142, 20);
+            this.textBoxAssignmentID.TabIndex = 9;
             // 
             // label1
             // 
@@ -131,8 +131,8 @@
             this.lb_gradeEarned.Name = "lb_gradeEarned";
             this.lb_gradeEarned.Size = new System.Drawing.Size(35, 13);
             this.lb_gradeEarned.TabIndex = 27;
-            this.lb_gradeEarned.Text = "label7";
-            this.lb_gradeEarned.Visible = false;
+            //this.lb_gradeEarned.Text = "label7";
+            this.lb_gradeEarned.Visible = true;
             // 
             // lb_gradePossible
             // 
@@ -141,8 +141,8 @@
             this.lb_gradePossible.Name = "lb_gradePossible";
             this.lb_gradePossible.Size = new System.Drawing.Size(35, 13);
             this.lb_gradePossible.TabIndex = 28;
-            this.lb_gradePossible.Text = "label8";
-            this.lb_gradePossible.Visible = false;
+            //this.lb_gradePossible.Text = "label8";
+            this.lb_gradePossible.Visible = true;
             // 
             // lb_percentageRetrieve
             // 
@@ -151,18 +151,16 @@
             this.lb_percentageRetrieve.Name = "lb_percentageRetrieve";
             this.lb_percentageRetrieve.Size = new System.Drawing.Size(35, 13);
             this.lb_percentageRetrieve.TabIndex = 29;
-            this.lb_percentageRetrieve.Text = "label9";
-            this.lb_percentageRetrieve.Visible = false;
+            //this.lb_percentageRetrieve.Text = "label9";
+            //this.lb_percentageRetrieve.Visible = false;
             // 
             // lb_letterGradeRetrieve
             // 
             this.lb_letterGradeRetrieve.AutoSize = true;
             this.lb_letterGradeRetrieve.Location = new System.Drawing.Point(103, 214);
             this.lb_letterGradeRetrieve.Name = "lb_letterGradeRetrieve";
-            this.lb_letterGradeRetrieve.Size = new System.Drawing.Size(41, 13);
+            this.lb_letterGradeRetrieve.Size = new System.Drawing.Size(0, 13);
             this.lb_letterGradeRetrieve.TabIndex = 30;
-            this.lb_letterGradeRetrieve.Text = "label10";
-            this.lb_letterGradeRetrieve.Visible = false;
             // 
             // RetrieveGrade
             // 
@@ -179,7 +177,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxAssignmentID);
             this.Controls.Add(this.label4);
             this.Name = "RetrieveGrade";
             this.Size = new System.Drawing.Size(271, 283);
@@ -191,7 +189,7 @@
         #endregion
 
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxAssignmentID;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
