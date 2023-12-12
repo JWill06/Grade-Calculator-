@@ -22,8 +22,8 @@ namespace GradeCalculator
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-           string letterGrade = string.Empty;
-           string percentage = string.Empty;
+            string letterGrade = string.Empty;
+            string percentage = string.Empty;
 
             try
             {
@@ -81,5 +81,4 @@ namespace GradeCalculator
         }
     }
 }
-
 
