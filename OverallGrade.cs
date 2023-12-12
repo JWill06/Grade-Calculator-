@@ -18,11 +18,8 @@ namespace GradeCalculator
             "User Instance=false;" +
             "Connection Timeout=30";
 
-        // Remove the hard-coded value
-        public int StudentID { get; set; } = 2;
-
-        // Set to a known good CourseID for testing
-        public int CourseID = 101;
+        public int StudentID { get; set; }  // Set to a known good StudentID for testing
+        public int courseId = 101; // Set to a known good CourseID for testing
 
         public OverallGrade()
         {
@@ -36,12 +33,11 @@ namespace GradeCalculator
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-
                     using (SqlCommand command = new SqlCommand("GetOverallStudentGrade", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@StudentID", StudentID);
-                        command.Parameters.AddWithValue("@CourseID", CourseID);
+                        command.Parameters.AddWithValue("@CourseID", courseId);
 
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
@@ -72,4 +68,3 @@ namespace GradeCalculator
             }
         }
     }
-}
