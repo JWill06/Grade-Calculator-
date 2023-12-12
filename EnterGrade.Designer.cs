@@ -1,4 +1,4 @@
-﻿namespace GradeCalculator
+namespace GradeCalculator
 {
     partial class EnterGrade
     {
@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtAssignment = new System.Windows.Forms.TextBox();
+            this.txtPointsEarned = new System.Windows.Forms.TextBox();
+            this.txtPointsPossible = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,27 +46,28 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Enter";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtAssignment.Location = new System.Drawing.Point(108, 68);
+            this.txtAssignment.Name = "txtAssignment";
+            this.txtAssignment.Size = new System.Drawing.Size(142, 20);
+            this.txtAssignment.TabIndex = 1;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(108, 116);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(142, 20);
-            this.textBox2.TabIndex = 2;
+            this.txtPointsEarned.Location = new System.Drawing.Point(108, 116);
+            this.txtPointsEarned.Name = "txtPointsEarned";
+            this.txtPointsEarned.Size = new System.Drawing.Size(142, 20);
+            this.txtPointsEarned.TabIndex = 2;
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(108, 158);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(142, 20);
-            this.textBox3.TabIndex = 3;
+            this.txtPointsPossible.Location = new System.Drawing.Point(108, 158);
+            this.txtPointsPossible.Name = "txtPointsPossible";
+            this.txtPointsPossible.Size = new System.Drawing.Size(142, 20);
+            this.txtPointsPossible.TabIndex = 3;
             // 
             // label1
             // 
@@ -117,6 +118,9 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtAssignment);
+            this.Controls.Add(this.txtPointsEarned);
+            this.Controls.Add(this.txtPointsPossible);
             this.Name = "EnterGrade";
             this.Size = new System.Drawing.Size(267, 260);
             this.ResumeLayout(false);
@@ -127,6 +131,9 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtAssignment;
+        private System.Windows.Forms.TextBox txtPointsEarned;
+        private System.Windows.Forms.TextBox txtPointsPossible;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
