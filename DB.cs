@@ -28,37 +28,44 @@ namespace GradeCalculator
             connectionString = conn;
         }
 
-        public string GetStudentName(int StudentID)
+        public string GetStudentName(int studentID)
         {
             string query = "SELECT FirstName, LastName FROM Student WHERE StudentID = @StudentID";
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@StudentID", StudentID);
-                    connection.Open();
-                    SqlDataReader reader = command.ExecuteReader();
-                    string firstName = "";
-                    string lastName = "";
-                    
-                    if (reader.Read())
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        firstName = reader.GetString(0);
-                        lastName = reader.GetString(1);
-                    }
+                        command.Parameters.AddWithValue("@StudentID", studentID);
+                        connection.Open();
 
-                    reader.Close();
-                    connection.Close();
-                    if (firstName == "" && lastName == "")
-                    {
-                        MessageBox.Show("Invalid student ID or student does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return null;
-                    }
-                    else
-                    {
-                        return firstName + " " + lastName;
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string firstName = reader.GetString(0);
+                                string lastName = reader.GetString(1);
+                                return $"{firstName} {lastName}";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid student ID or student does not exist.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return null;
+                            }
+                        }
                     }
                 }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show($"SQL Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"General Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
     }
