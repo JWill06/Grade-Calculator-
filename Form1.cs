@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +28,7 @@ namespace GradeCalculator
             enterGrade1.Hide();
             retrieveGrade1.Hide();
             overallGrade1.Hide();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -64,16 +65,18 @@ namespace GradeCalculator
 
         private void button4_Click(object sender, EventArgs e)
         {
-            database = new DB( "Server = WARDWINDOWS; " +
+            database = new DB("Server=DESKTOP-PVPHME7\\SQLEXPRESS;Database=StudentDatabase;Integrated Security=True; " +
                    "Trusted_Connection=true;" +
                    "Database=StudentDatabase;" +
                    "User Instance=false;" +
                    "Connection Timeout=30");
 
-
             int StudentID = int.Parse(textBox1.Text);
             string studentName = "";
             studentName = database.GetStudentName(StudentID);
+            retrieveGrade1.StudentID = StudentID;
+            overallGrade1.StudentID = StudentID;
+
 
             if (studentName == null)
             {
