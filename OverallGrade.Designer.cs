@@ -1,4 +1,4 @@
-﻿namespace GradeCalculator
+namespace GradeCalculator
 {
     partial class OverallGrade
     {
