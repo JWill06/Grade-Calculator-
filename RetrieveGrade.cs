@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -7,7 +7,7 @@ namespace GradeCalculator
 {
     public partial class RetrieveGrade : UserControl
     {
-        private string connectionString = "Server=DESKTOP-OR47OK3\\SQLEXPRESS; " +
+        private string connectionString = "Server=DESKTOP-PVPHME7\\SQLEXPRESS; " +
             "Trusted_Connection=true;" +
             "Database=StudentDatabase;" +
             "User Instance=false;" +
@@ -81,4 +81,7 @@ namespace GradeCalculator
         }
     }
 }
+
+
+
 

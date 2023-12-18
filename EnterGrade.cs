@@ -16,7 +16,7 @@ namespace GradeCalculator
         {
             InitializeComponent();
         }
-        // Replace with your actual connection string
+
         string connectionString = "Server=DESKTOP-PVPHME7\\SQLEXPRESS;Database=StudentDatabase;Integrated Security=True; " +
             "Trusted_Connection=true;" +
             "Database=StudentDatabase;" +

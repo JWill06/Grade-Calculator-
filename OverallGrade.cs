@@ -11,60 +11,60 @@ using System.Windows.Forms;
 
 namespace GradeCalculator
 {
-    // Replace with your actual connection string
-        string connectionString = "Server=; " +
+
+    private string connectionString = "Server=DESKTOP-PVPHME7\\SQLEXPRESS; " +
             "Trusted_Connection=true;" +
             "Database=StudentDatabase;" +
             "User Instance=false;" +
             "Connection Timeout=30";
 
-        public int StudentID { get; set; }  // Set to a known good StudentID for testing
-        public int courseId = 101; // Set to a known good CourseID for testing
+    public int StudentID { get; set; }  // Set to a known good StudentID for testing
+    public int courseId = 101; // Set to a known good CourseID for testing
 
-        public OverallGrade()
-        {
-            InitializeComponent();
-        }
+    public OverallGrade()
+    {
+        InitializeComponent();
+    }
 
-        private void button1_Click(object sender, EventArgs e)
+    private void button1_Click(object sender, EventArgs e)
+    {
+        try
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("GetOverallStudentGrade", connection))
                 {
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand("GetOverallStudentGrade", connection))
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@StudentID", StudentID);
+                    command.Parameters.AddWithValue("@CourseID", courseId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@StudentID", StudentID);
-                        command.Parameters.AddWithValue("@CourseID", courseId);
-
-                        using (SqlDataReader reader = command.ExecuteReader())
+                        if (reader.Read())
                         {
-                            if (reader.Read())
-                            {
-                                string overallLetterGrade = reader["OverallLetterGrade"].ToString();
-                                string overallPercentage = reader["OverallGradePercentage"].ToString();
+                            string overallLetterGrade = reader["OverallLetterGrade"].ToString();
+                            string overallPercentage = reader["OverallGradePercentage"].ToString();
 
-                                lb_letterGradeOverall.Text = overallLetterGrade;
-                                lb_percentageOverall.Text = overallPercentage + "%";
-                            }
-                            else
-                            {
-                                lb_letterGradeOverall.Text = "No data found";
-                                lb_percentageOverall.Text = "No data found";
-                            }
+                            lb_letterGradeOverall.Text = overallLetterGrade;
+                            lb_percentageOverall.Text = overallPercentage + "%";
+                        }
+                        else
+                        {
+                            lb_letterGradeOverall.Text = "No data found";
+                            lb_percentageOverall.Text = "No data found";
                         }
                     }
                 }
             }
-            catch (SqlException sqlEx)
-            {
-                MessageBox.Show("SQL Error: " + sqlEx.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("General Error: " + ex.Message);
-            }
+        }
+        catch (SqlException sqlEx)
+        {
+            MessageBox.Show("SQL Error: " + sqlEx.Message);
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("General Error: " + ex.Message);
         }
     }
+}

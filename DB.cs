@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,12 +12,10 @@ namespace GradeCalculator
     class DB
     {
         string connectionString;
-        SqlConnection cnn;
-
+        
         public DB()
         {
-            //Change to your server
-            connectionString = "Server = WARDWINDOWS; " +
+            connectionString = "Data Source=DESKTOP-PVPHME7\\SQLEXPRESS;" +
                                "Trusted_Connection=true;" +
                                "Database=StudentDatabase;" +
                                "User Instance=false;" +
@@ -70,3 +69,4 @@ namespace GradeCalculator
         }
     }
 }
+
